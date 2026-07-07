@@ -22,7 +22,7 @@
         j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
         f.parentNode.insertBefore(j,f);
 
-    })(window,document,'script','dataLayer','GTM-KM66GTGZ');
+    })(window,document,'script','dataLayer','GTM-5L5MBCJ9');
     </script>
     <!-- End Google Tag Manager -->
 
@@ -98,7 +98,7 @@
 
 <!-- Google Tag Manager (noscript) -->
 <noscript>
-<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM66GTGZ"
+<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5L5MBCJ9"
 height="0"
 width="0"
 style="display:none;visibility:hidden"></iframe>
@@ -144,15 +144,12 @@ style="display:none;visibility:hidden"></iframe>
 </footer>
 
 <script>
-
 document.getElementById("url").textContent = location.href;
 document.getElementById("ua").textContent = navigator.userAgent;
 document.getElementById("time").textContent = new Date().toString();
 
-/* Inisialisasi dataLayer */
 window.dataLayer = window.dataLayer || [];
 
-/* Event saat halaman dimuat */
 dataLayer.push({
     event: "page_loaded",
     page_name: "Home",
@@ -162,8 +159,7 @@ dataLayer.push({
 
 console.log("Initial dataLayer:", dataLayer);
 
-/* Tombol demo */
-function sendEvent(){
+function sendEvent() {
 
     const payload = {
         event: "button_click",
@@ -178,7 +174,6 @@ function sendEvent(){
 
     console.log("Updated dataLayer:", dataLayer);
 }
-
 </script>
 
 </body>
