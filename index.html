@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GTM Security Lab</title>
+
+    <!-- Google Tag Manager -->
+    <script>
+    (function(w,d,s,l,i){
+        w[l]=w[l]||[];
+        w[l].push({
+            'gtm.start': new Date().getTime(),
+            event:'gtm.js'
+        });
+
+        var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),
+            dl=l!='dataLayer' ? '&l='+l : '';
+
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j,f);
+
+    })(window,document,'script','dataLayer','GTM-KM66GTGZ');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <style>
+        *{
+            box-sizing:border-box;
+        }
+
+        body{
+            margin:0;
+            font-family:Arial,Helvetica,sans-serif;
+            background:#f5f5f5;
+            color:#333;
+        }
+
+        header{
+            background:#1f2937;
+            color:white;
+            padding:40px;
+            text-align:center;
+        }
+
+        main{
+            max-width:900px;
+            margin:auto;
+            padding:30px;
+        }
+
+        .card{
+            background:white;
+            padding:24px;
+            margin-bottom:20px;
+            border-radius:10px;
+            box-shadow:0 3px 8px rgba(0,0,0,.08);
+        }
+
+        button{
+            background:#2563eb;
+            color:white;
+            border:none;
+            padding:12px 18px;
+            border-radius:6px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            opacity:.9;
+        }
+
+        code{
+            background:#eee;
+            padding:2px 5px;
+            border-radius:4px;
+        }
+
+        pre{
+            background:#111827;
+            color:#22c55e;
+            padding:15px;
+            border-radius:8px;
+            overflow:auto;
+        }
+
+        footer{
+            text-align:center;
+            color:#777;
+            padding:30px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM66GTGZ"
+height="0"
+width="0"
+style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<header>
+    <h1>Google Tag Manager Security Lab</h1>
+    <p>Static HTML hosted on GitHub Pages</p>
+</header>
+
+<main>
+
+    <div class="card">
+        <h2>Page Information</h2>
+
+        <p><strong>URL</strong></p>
+        <code id="url"></code>
+
+        <p><strong>User Agent</strong></p>
+        <code id="ua"></code>
+
+        <p><strong>Current Time</strong></p>
+        <code id="time"></code>
+    </div>
+
+    <div class="card">
+        <h2>dataLayer Demonstration</h2>
+
+        <p>Klik tombol di bawah untuk mengirim event ke <code>dataLayer</code>.</p>
+
+        <button onclick="sendEvent()">
+            Send GTM Event
+        </button>
+
+        <pre id="output"></pre>
+    </div>
+
+</main>
+
+<footer>
+    GTM Security Lab | GitHub Pages
+</footer>
+
+<script>
+
+document.getElementById("url").textContent = location.href;
+document.getElementById("ua").textContent = navigator.userAgent;
+document.getElementById("time").textContent = new Date().toString();
+
+/* Inisialisasi dataLayer */
+window.dataLayer = window.dataLayer || [];
+
+/* Event saat halaman dimuat */
+dataLayer.push({
+    event: "page_loaded",
+    page_name: "Home",
+    application: "GitHub Pages",
+    environment: "Lab"
+});
+
+console.log("Initial dataLayer:", dataLayer);
+
+/* Tombol demo */
+function sendEvent(){
+
+    const payload = {
+        event: "button_click",
+        button_name: "Test Button",
+        timestamp: new Date().toISOString()
+    };
+
+    dataLayer.push(payload);
+
+    document.getElementById("output").textContent =
+        JSON.stringify(payload, null, 2);
+
+    console.log("Updated dataLayer:", dataLayer);
+}
+
+</script>
+
+</body>
+</html>
