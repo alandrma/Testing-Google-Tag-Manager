@@ -1,5 +1,19 @@
 function gv() {
-    
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf("affclick=") == 0) {
+            return c.substring("affclick=".length, c.length);
+        }
+    }
+    if (localStorage.getItem('affclick')) {
+        return localStorage.getItem('affclick');
+    }
+    return "";
 }
 
 (function(){
@@ -36,7 +50,7 @@ function gv() {
     }
 
     let img = document.createElement('img');
-    img.src = '//app.adstracking.io/success.jpg?success=1' + pixel;
+    img.src = '//alandrma.github.io/success.jpg?success=1' + pixel;
     img.alt = '';
     img.style.cssText = 'position:absolute; top=-9999px; width:1px; height:1px; border:0';
 })();
